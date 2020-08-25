@@ -29,8 +29,8 @@ class FixUnderfit:
         df = X.copy()
             
         #divido dataframes uno con Sospechosos, otro con Aceptados
-        df4 = df.loc[df2['OBJETIVO'] == 'Sospechoso']
-        df5= df.loc[df2['OBJETIVO'] == 'Aceptado']
+        df4 = df.loc[df['OBJETIVO'] == 'Sospechoso']
+        df5= df.loc[df['OBJETIVO'] == 'Aceptado']
 
         #para balancear muestras tomo 8000 del df con sospechosos
         df8 = df4.sample(8000, replace=True)
@@ -47,5 +47,7 @@ class FixUnderfit:
 
         # Devolvemos ultimo dataframe
         return df6
+    
+    
     
     
