@@ -28,9 +28,9 @@ class FixUnderfit:
         # Primero copiamos el dataframe de datos de entrada 'X'
         df2 = X.copy()
 	
-	#los uno
-	obj = pd.DataFrame({'OBJETIVO': []})
-	f6 = pd.concat([df2, obj], axis=1)
+#los uno
+obj = pd.DataFrame({'OBJETIVO': []})
+df6 = pd.concat([df2, obj], axis=1)
 
             
         #divido dataframes uno con Sospechosos, otro con Aceptados
