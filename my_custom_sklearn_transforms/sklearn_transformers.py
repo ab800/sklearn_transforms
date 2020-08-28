@@ -55,7 +55,7 @@ df6 = pd.concat([df2, obj], axis=1)
     
     
     
-class mySampling:
+class MySampling:
     def __init__(self, columns = None):
         self.data=self
 
