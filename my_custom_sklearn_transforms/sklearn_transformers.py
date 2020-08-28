@@ -26,16 +26,11 @@ class FixUnderfit:
     
     def transform(self, X):
         # Primero copiamos el dataframe de datos de entrada 'X'
-        df2 = X.copy()
-	
-#los uno
-obj = pd.DataFrame({'OBJETIVO': []})
-df6 = pd.concat([df2, obj], axis=1)
-
+        df = X.copy()
             
         #divido dataframes uno con Sospechosos, otro con Aceptados
-        df4 = df2.loc[df2['OBJETIVO'] == 'Sospechoso']
-        df5= df2.loc[df2['OBJETIVO'] == 'Aceptado']
+        df4 = df.loc[df2['OBJETIVO'] == 'Sospechoso']
+        df5= df.loc[df2['OBJETIVO'] == 'Aceptado']
 
         #para balancear muestras tomo 8000 del df con sospechosos
         df8 = df4.sample(8000, replace=True)
@@ -54,18 +49,4 @@ df6 = pd.concat([df2, obj], axis=1)
         return df6
     
     
-    
-class MySampling:
-    def __init__(self, columns = None):
-        self.data=self
 
-    def fit(self, X_train, y_train):
-	nm = SMOTETomek(ratio='auto')
-        X_train, y_train = nm.fit_resample(X_train, y_train)
-    
-    def transform(self, X_train, y_train):
-       nm = SMOTETomek(ratio='auto')
-       X_train, y_train = nm.fit_resample(X_train, y_train)
-
-       return X_train, y_train
-  
