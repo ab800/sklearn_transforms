@@ -1,5 +1,5 @@
 from sklearn.base import BaseEstimator, TransformerMixin
-
+from imblearn.combine import SMOTETomek
 
 # All sklearn Transforms must have the `transform` and `fit` methods
 class DropColumns(BaseEstimator, TransformerMixin):
@@ -27,6 +27,11 @@ class FixUnderfit:
     def transform(self, X):
         # Primero copiamos el dataframe de datos de entrada 'X'
         df2 = X.copy()
+	
+#los uno
+obj = pd.DataFrame({'OBJETIVO': []})
+df6 = pd.concat([df2, obj], axis=1)
+
             
         #divido dataframes uno con Sospechosos, otro con Aceptados
         df4 = df2.loc[df2['OBJETIVO'] == 'Sospechoso']
@@ -50,4 +55,19 @@ class FixUnderfit:
     
     
     
+class mySampling:
+    def __init__(self, columns = None):
+        self.data=self
+
+    def fit(self, X_train, y_train):
+	nm = SMOTETomek(ratio='auto')
+        X_train, y_train = nm.fit_resample(X_train, y_train)
+
+       return X_train, y_train
     
+    def transform(self, X_train, y_train):
+       nm = SMOTETomek(ratio='auto')
+        X_train, y_train = nm.fit_resample(X_train, y_train)
+
+       return X_train, y_train
+  
