@@ -62,12 +62,10 @@ class MySampling:
     def fit(self, X_train, y_train):
 	nm = SMOTETomek(ratio='auto')
         X_train, y_train = nm.fit_resample(X_train, y_train)
-
-       return X_train, y_train
     
     def transform(self, X_train, y_train):
        nm = SMOTETomek(ratio='auto')
-        X_train, y_train = nm.fit_resample(X_train, y_train)
+       X_train, y_train = nm.fit_resample(X_train, y_train)
 
        return X_train, y_train
   
